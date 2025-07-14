@@ -20,20 +20,28 @@ const vendorRoute = require("./routes/vendor");
 const fileUploadRoute = require("./routes/fileUpload");
 const userClockInRoute = require("./routes/userClockIn");
 
+// const connection = mysql.createConnection({
+//   host: process.env.DB_URL,
+//   user: "root",
+//   password: "zaq@XSW2345",
+//   database: "store",
+// });
+
 const connection = mysql.createConnection({
-  host: process.env.DB_URL,
+  host: "127.0.0.1",
   user: "root",
   password: "zaq@XSW2345",
   database: "store",
+  port: 3306,
+  connectTimeout: 10000,
 });
 
-// Connect to the MySQL database
 connection.connect((err) => {
   if (err) {
-    console.error("Error connecting to the MySQL database:", err);
-    return;
+    console.error("Error connecting:", err);
+  } else {
+    console.log("Connected to MySQL");
   }
-  console.log("Connected to the MySQL database!");
 });
 
 app.get("/", function (req, res) {
