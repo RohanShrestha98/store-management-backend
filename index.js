@@ -52,7 +52,7 @@ app.use("/api/product", productRoute);
 app.use("/api/sales", salesRoute);
 app.use("/api/vendor", vendorRoute);
 
-const PORT = process.env.PORT;
+const PORT = process.env.PORT || 3306;
 
 app.listen(PORT, () => {
   console.log(`Server is up and running on port ${PORT}`);
